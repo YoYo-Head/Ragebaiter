@@ -1,0 +1,71 @@
+:root {
+    --chatbox-length: 1000px;
+    --chatbox-height: 1000px;
+
+}
+
+body {
+    background-color: dimgray;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 20px;
+
+   
+   
+}
+
+h2 {
+    text-align: center;
+    padding-top: 30px;
+
+}
+
+#chatbox {
+    height: 700px;
+    max-width: var(--chatbox-length);
+    background: linear-gradient(90deg, #00d4ff, #ff6b6b);
+
+    margin-left: 25%;
+    margin-top: 50px;
+    
+    
+
+}
+
+#vertical-line {
+    max-width: var(--chatbox-length);
+    height: 10px;
+    background-color: blanchedalmond;
+}
+
+#message-box {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+
+    width: calc(var(--chatbox-length) - 285px);
+    height: 60px;
+
+}
+
+.top-container {
+    background-color: cyan;
+    height: calc(0.5px * var(--chatbox-height));
+    max-width: var(--chatbox-length);
+    padding-bottom: 20px;
+
+}
+
+.middle-container {
+    height: 550px;
+
+}
+
+.bottom-container {
+    max-width: var(--chatbox-length);
+    background-color: cyan;
+
+
+}
