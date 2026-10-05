@@ -3,44 +3,74 @@ import torch.nn as nn
 import torch.nn.functional as f
 import pandas as pd
 import matplotlib.pyplot as plt
-from nltk.tokenize import word_tokenize as wt
+import nltk
 
+nltk.download("wordnet")
 
 class Model(nn.Module):
 
-    # in_features: punctuation, noun, verb (maybe)
-    # Out features r the predicted words
-    def __init__(self, in_features=3, h1=300, h2=300, h3=300, out_features=1000):
-        super().__init__()
-        self.fc1 = nn.Linear(in_features, h1)
+    
+    def __init__(self, input_size, output_size, h1=300, h2=150, h3=75):
+        super(Model, self).__init__()
+
+        self.fc1 = nn.Linear(input_size, h1)
         self.fc2 = nn.Linear(h1, h2)
         self.fc3 = nn.Linear(h2, h3)
-        self.out = nn.Linear(h3, out_features)
+        self.out = nn.Linear(h3, output_size)
+        self.relu = nn.ReLU
+        self.dropout = nn.Dropout(0.5)
 
     def forward(self, x):
-        x = f.relu(self.fc1(x))
-        x = f.relu(self.fc2(x))
-        x = f.relu(self.fc3(x))
+        x = self.relu(self.fc1(x))
+        x = self.dropout(x)
+
+        x = self.relu(self.fc2(x))
+        x = self.dropout(x)
+
+        x = self.relu(self.fc3(x))
+        x = self.dropout(x)
+
         x = self.out(x)
 
         return x
 
+class ModelAssistant:
+    def __init__(self, intents_path, function_mappings = None):
+        self.model = None
+        self.intents_path = intents_path
 
-torch.manual_seed(41)
+        self.documents = []
+        self.vocabulary = []
+        self.intents = []
+        self.intents_responses = []
 
-model = Model
+        self.function_mappings = function_mappings
 
-df = pd.read_csv("https://raw.githubusercontent.com/kaspercools/genz-dataset/refs/heads/main/genz_slang.csv")
+        self.X = None
+        self.y = None
 
-tokenizedList = []
+    @staticmethod
+    def tokenize_and_lemmatize(text):
+        lemmatizer = nltk.WordNetLemmatizer()
 
-columns = ["keyword", "description"]
+        words = nltk.word_tokenize(text)
+        words = [lemmatizer.lemmatize(word.lower()) for word in words]
 
-for column in columns:
-    for word in column:
-        token = wt(word)
+        return words
 
-        tokenizedList.append(token)
+
+
+ragebaiter = ModelAssistant("intents.json")
+print(ragebaiter.tokenize_and_lemmatize("I am a wizard!"))
+
+
+
+
+
+
+
+
+
 
 
 

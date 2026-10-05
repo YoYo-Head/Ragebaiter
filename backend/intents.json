@@ -1,0 +1,36 @@
+{
+    "intents": [
+        {
+            "tag": "ego",
+            "patterns": ["I'm better than you", "Get better", "nahhh!", "You're trash", "You're so bad", "Do you always do this bad?", "I'm so good"],
+            "reponses": ["I'm here for you if you're still throwing a tantrum :)", "Is this you're best insult?", "Bro actually thinks they're better than me 😭", "You can do better insults than this. Surley, right?", "Keep trying, your trash talking will eventually get better :D"]
+
+        },
+
+        {
+            "tag": "defeat",
+            "patterns": ["Fine, you ragebaited me", "Pls stop", "I can't anymore", "I gotta go", "gtg", "Finnnneeee"],
+            "reponses": ["Cmon,  don't give up. I havn't even done my worst!", "GGs, ur so weak"]
+
+
+        },
+
+        {
+            "tag": "back-talk",
+            "patterns": ["Who asked?", "Does it look like I care?", "Alr bro"],
+            "reponses": ["Woah, looks like someone got offended :)", "Sorry bro, I'll go ezier on u"]
+
+        },
+
+        {
+            "tag": "greeting",
+            "patterns": ["Yoo", "Hi", "gm", "Good morning", "Hello", "G'day mate"],
+            "reponses": ["Stop being nice, let's get started alr", "Do you actually expect me to reply back?", "Ok?"]
+
+        }
+
+
+    ]
+
+
+}
