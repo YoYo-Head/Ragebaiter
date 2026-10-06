@@ -30,7 +30,7 @@ ragebaiter.save_model("ragebaiter-v1.pth", "dimensions.json")
 def root():
     return {"message": "API running"}
 
-@app.post("/message")
+@app.post("/message", responseModel=response_models.messageResponse)
 def request_message(message: str):
     response = ragebaiter.proccess_message(message)
 
