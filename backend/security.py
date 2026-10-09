@@ -30,4 +30,4 @@ async def verify_api_key(x_api_key: str = Header(default=None)):
 
 
 
-limiter = Limiter(key_func=real_ip, default_limits=["30/minute"])
+limiter = Limiter(key_func=real_ip)#, default_limits=["30/minute"])

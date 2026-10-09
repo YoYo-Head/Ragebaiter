@@ -6,6 +6,7 @@
 
 body {
     background-color: dimgray;
+    margin: 0;
 }
 
 h1 {
@@ -27,9 +28,12 @@ h2 {
     max-width: var(--chatbox-length);
     background: linear-gradient(90deg, #00d4ff, #ff6b6b);
 
-    margin-left: 25%;
-    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
     
+    justify-content: center;
+    align-items: center;
+
     
 
 }
@@ -44,6 +48,7 @@ h2 {
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 5px;
+
 
     width: calc(var(--chatbox-length) - 285px);
     height: 60px;
@@ -60,6 +65,8 @@ h2 {
 
 .middle-container {
     height: 550px;
+    overflow-y: scroll;
+    padding-bottom: 30px;
 
 }
 
@@ -69,3 +76,77 @@ h2 {
 
 
 }
+
+
+.speechb1 {
+    width: 200px;
+    min-height: 70px;
+    background-color: white;
+    position: relative;
+    border-radius: 12px;
+    display: flex;
+
+    margin-left: auto;
+    margin-right: 50px;
+    margin-top: 30px;
+    
+
+}
+
+.speechb1::before {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 16px;
+    width: 0;
+    height: 0;
+    border-top: 13px transparent;
+    border-left: 36px solid white;
+    border-bottom: 13px solid transparent;
+
+    
+
+
+}
+
+.speechb2 {
+    max-width: 200px;
+    min-height: 70px;
+    background-color: white;
+    position: relative;
+    border-radius: 12px;
+    display: flex;
+
+    overflow-wrap: break-word;
+
+    margin-left: 50px;
+    margin-right: auto;
+    margin-top: 30px;
+    
+
+}
+
+.speechb2::before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 16px;
+    width: 0;
+    height: 0;
+    border-top: 13px transparent;
+    border-right: 36px solid white;
+    border-bottom: 13px solid transparent;
+
+
+}
+
+.speech-text {
+    margin: 10px;
+
+    hyphens: auto;
+
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
