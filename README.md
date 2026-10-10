@@ -23,3 +23,7 @@ if it shows *status code 200*, you can read the json data below it to see the re
 To use the frontend interface, follow option 1. After that, make sure you have the `Live Server` VS Code extension.
 Once ready, right click `index.html` from the `/frontend` directory. Once it loads, it should automatically open up
 a browser that loads the html code. After that, you can use the webpage to interact with the bot!
+
+# Where my training data is
+My trainig data can be located in the file `intents.json` in the `/backend` directory. While alot of it I made myself,
+I did use AI to generate some data for me to use.
