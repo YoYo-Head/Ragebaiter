@@ -5,36 +5,54 @@
 }
 
 body {
-    background-color: dimgray;
+    background-image: url("resources/Geometric-Grid-Pattern-edit-online.png");
     margin: 0;
 }
 
 h1 {
+
+    font-family: 'Bitcount Ink', sans-serif;
     text-align: center;
     padding-top: 20px;
+    padding-bottom: 20px;
 
-   
+    border-radius: 20px;
+    border: 3px black solid;
+
+    background-color: yellowgreen;
+
+    min-height: 30px;
+    max-width: 1000px;
+
+    margin-left: auto;
+    margin-right: auto;
    
 }
 
 h2 {
     text-align: center;
     padding-top: 30px;
+    font-size: 32px;
+    font-family: "Noto Sans TC", sans-serif;
+
+    margin-top: auto;
+    margin-bottom: auto;
 
 }
 
 #chatbox {
-    height: 700px;
+    max-height: var(--chatbox-height);
     max-width: var(--chatbox-length);
     background: linear-gradient(90deg, #00d4ff, #ff6b6b);
 
     margin-left: auto;
     margin-right: auto;
-    
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 10px;
 
-    
+    border: 3px black solid;
+    border-radius: 20px;
+    overflow: hidden;
+
 
 }
 
@@ -45,21 +63,42 @@ h2 {
 }
 
 #message-box {
+    box-sizing: border-box;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 5px;
+    margin-left: 20px;
 
-
-    width: calc(var(--chatbox-length) - 285px);
+    width: calc(100% - 280px);
     height: 60px;
+
+    border-radius: 25px;
+    border: 3px turquoise solid;
+
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#submit {
+    height: 60px;
+    margin-left: 25px ;
+    margin-right: 20px;
+    width: 205px;
+
+    font-family: 'Poppins', sans-serif;
+
+    border-radius: 20px;
+    border: 3px turquoise solid;
 
 }
 
 .top-container {
     background-color: cyan;
-    height: calc(0.5px * var(--chatbox-height));
+    height: 100px;
     max-width: var(--chatbox-length);
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 1px;
+
+    
 
 }
 
@@ -73,6 +112,7 @@ h2 {
 .bottom-container {
     max-width: var(--chatbox-length);
     background-color: cyan;
+
 
 
 }
@@ -89,6 +129,8 @@ h2 {
     margin-left: auto;
     margin-right: 50px;
     margin-top: 30px;
+
+    border: 2px black solid;
     
 
 }
@@ -103,6 +145,8 @@ h2 {
     border-top: 13px transparent;
     border-left: 36px solid white;
     border-bottom: 13px solid transparent;
+
+    
 
     
 
@@ -122,6 +166,9 @@ h2 {
     margin-left: 50px;
     margin-right: auto;
     margin-top: 30px;
+
+    border: 2px black solid;
+
     
 
 }
@@ -147,6 +194,8 @@ h2 {
 
     margin-top: auto;
     margin-bottom: auto;
+
+    font-family: 'Montserrat', sans-serif;
 
 }
 
