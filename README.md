@@ -1,10 +1,10 @@
 ## Ragebaiter
 
-# What it is
+# What it is and how it works
 Ragebaiter is a chatterbox that combines the use of classification and a neural network to try annoy the user. 
 It's for people who are either egoistic, or just want to waste some time :). Currently, the frontend and backend 
 are working, with the backend being able to train the bot, save it's data and load data. It is also able to 
-tokenize and lemmatize the intents (which hass me different classifications) and process messages, giving a 
+tokenize and lemmatize the intents (which has my different classifications) and process messages, giving a 
 response back. FastAPI for my backend also works fine, allowing for the frontend to pass user messages and fetch 
 bot responses. I've also tried my best to design the frontend.
 
