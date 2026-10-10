@@ -68,7 +68,6 @@ class ModelAssistant:
         return [1 if word in words else 0 for word in self.vocabulary] # turns into 1s and 0s for word positioning
 
     def parse_intents(self):
-        lemmatizer = nltk.WordNetLemmatizer()
 
         if os.path.exists(self.intents_path):
 
@@ -132,18 +131,30 @@ class ModelAssistant:
 
     # Dumps model data (e.g.: weights) into json file
     def save_model(self, model_path, dimensions_path):
-        torch.save(self.model.state_dict(), model_path)
+        torch.save({"model_state_dict": self.model.state_dict(),
+                    "vocabulary": self.vocabulary,
+                    "intents": self.intents,
+                    "intents_responses": self.intents_responses
+                    }, model_path)
 
         with open(dimensions_path, "w") as f:
             json.dump({ "input size": self.X.shape[1], "output_size": len(self.intents) }, f)
 
     # Loads model data to model
     def load_model(self, model_path, dimensions_path):
+        checkpoint = torch.load(model_path, map_location="cpu", weights_only=True)
+
+        self.vocabulary = checkpoint["vocabulary"]
+        self.intents = checkpoint["intents"]
+        self.intents_responses  = checkpoint["intents_responses"]
+
         with open(dimensions_path, "r") as f:
             dimensions = json.load(f)
 
         self.model = Model(dimensions["input_size"], dimensions["output_size"])
-        self.model.load_state_dict(torch.load(model_path, weights_only=True))
+
+        self.model.load_state_dict(checkpoint["model_state_dict"])
+        self.model.eval()
 
     # Gets message and tokenises, and then goes thru model, then returns response
     def proccess_message(self, input_message):

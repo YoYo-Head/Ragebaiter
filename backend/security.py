@@ -13,7 +13,7 @@ load_dotenv()
 key = os.getenv("API_KEY")
 
 def real_ip(request: Request):
-    forwarded = request.header.get("X-Forwarded-For")
+    forwarded = request.headers.get("X-Forwarded-For")
 
     if forwarded:
         return forwarded.split(",")[0]

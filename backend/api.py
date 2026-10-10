@@ -3,7 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 import bot
 import response_models
 import security
+from os.path import exists
 
+dimensionsPath = "dimensions.json"
+modelPath = "ragebaiter-v1.pth"
 
 app = FastAPI()
 app.state.limiter = security.limiter
@@ -21,10 +24,13 @@ app.add_middleware(
 
 ragebaiter = bot.ModelAssistant("intents.json")
 
+print("Training ragebaiter...")
 ragebaiter.parse_intents()
 ragebaiter.prepare_data()
 ragebaiter.train_model(8, 0.001, 300)
+print("Trained the model!")
 ragebaiter.save_model("ragebaiter-v1.pth", "dimensions.json")
+
 
 idNumbM = 0
 idNumbT = 0
@@ -40,15 +46,18 @@ def nextNumberT() -> int:
     return idNumbT
 
 @app.get("/")
-def root():
+@security.limiter.limit("65/minute")
+def root(request: security.Request):
     return {"message": "API running"}
 
 @app.post("/message", response_model=response_models.messageResponse)
-def request_message(data: response_models.messageCreate):
+@security.limiter.limit("65/minute")
+def request_message(data: response_models.messageCreate, request: security.Request):
     return response_models.messageResponse(id=nextNumberM(), message=ragebaiter.proccess_message(data.message))
 
 @app.post("/train/{epochs}", response_model=response_models.trainingResponse)
-def request_training(data: response_models.trainingCreate, _: str = Depends(security.verify_api_key)):
+@security.limiter.limit("1/minute")
+def request_training(data: response_models.trainingCreate,  request: security.Request, _: str = Depends(security.verify_api_key)):
     ragebaiter.parse_intents()
     ragebaiter.prepare_data()
     ragebaiter.train_model(8, 0.001, data.epochs)
