@@ -24,12 +24,17 @@ app.add_middleware(
 
 ragebaiter = bot.ModelAssistant("intents.json")
 
-print("Training ragebaiter...")
-ragebaiter.parse_intents()
-ragebaiter.prepare_data()
-ragebaiter.train_model(8, 0.001, 300)
-print("Trained the model!")
-ragebaiter.save_model("ragebaiter-v1.pth", "dimensions.json")
+if exists(modelPath) and exists(dimensionsPath):
+    ragebaiter.load_model(modelPath, dimensionsPath)
+    print("Model has loaded!")
+
+else:
+    print("Training ragebaiter...")
+    ragebaiter.parse_intents()
+    ragebaiter.prepare_data()
+    ragebaiter.train_model(8, 0.001, 300)
+    print("Trained the model!")
+    ragebaiter.save_model("ragebaiter-v1.pth", "dimensions.json")
 
 
 idNumbM = 0
