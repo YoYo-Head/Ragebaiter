@@ -12,7 +12,7 @@ function createBubbleHTML(className, text) {
 
 
 const api = axios.create({
-    baseURL: "/api"
+    baseURL: "/"
 
 })
 
