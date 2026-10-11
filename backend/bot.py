@@ -12,6 +12,7 @@ import json
 import random
 
 nltk.download("punkt_tab")
+nltk.download("wordnet")
 
 
 class Model(nn.Module):
