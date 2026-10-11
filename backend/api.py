@@ -50,17 +50,17 @@ def nextNumberT() -> int:
     idNumbT += 1
     return idNumbT
 
-@app.get("/")
+@app.get("/api")
 @security.limiter.limit("65/minute")
 def root(request: security.Request):
     return {"message": "API running"}
 
-@app.post("/message", response_model=response_models.messageResponse)
+@app.post("/api/message", response_model=response_models.messageResponse)
 @security.limiter.limit("65/minute")
 def request_message(data: response_models.messageCreate, request: security.Request):
     return response_models.messageResponse(id=nextNumberM(), message=ragebaiter.proccess_message(data.message))
 
-@app.post("/train/{epochs}", response_model=response_models.trainingResponse)
+@app.post("/api/train/{epochs}", response_model=response_models.trainingResponse)
 @security.limiter.limit("1/minute")
 def request_training(data: response_models.trainingCreate,  request: security.Request, _: str = Depends(security.verify_api_key)):
     ragebaiter.parse_intents()
