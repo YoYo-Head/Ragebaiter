@@ -11,6 +11,8 @@ import os
 import json
 import random
 
+nltk.download("punkt_tab")
+
 
 class Model(nn.Module):
 
